@@ -23,10 +23,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Header title="Welcome to my app!" />      
+      <main>        
         
-        <audio src="https://music-pp.netlify.app/rosee.mp3" autoPlay loop controls />
+        <source src="https://samplesongs.netlify.app/rosee.mp3" type="audio/mpeg">
       </main>
 
       <Footer />
