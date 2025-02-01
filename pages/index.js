@@ -8,7 +8,7 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof Audio !== "undefined") {
-      const audioInstance = new Audio("/audio.mp3");
+      const audioInstance = new Audio("/rosee.mp3");
       audioInstance.loop = true; // Enable looping
       audioInstance.autoplay = true; // Enable autoplay
       audioInstance.play().catch((e) => console.log("Autoplay blocked:", e)); // Handle autoplay restrictions
@@ -24,10 +24,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header title="Welcome to my app!" />
-        <p className="description">
-          Audio is playing in the background.
-        </p>
+        <Header title="Welcome to my app!" />      
         
         <audio src="/rosee.mp3" autoPlay loop controls />
       </main>
