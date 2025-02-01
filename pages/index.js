@@ -1,16 +1,20 @@
 import Head from 'next/head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const [audio] = useState(typeof Audio !== "undefined" ? new Audio("/audio.mp3") : null);
+  const [audio, setAudio] = useState(null);
 
-  const playAudio = () => {
-    if (audio) {
-      audio.play();
+  useEffect(() => {
+    if (typeof Audio !== "undefined") {
+      const audioInstance = new Audio("/audio.mp3");
+      audioInstance.loop = true; // Enable looping
+      audioInstance.autoplay = true; // Enable autoplay
+      audioInstance.play().catch((e) => console.log("Autoplay blocked:", e)); // Handle autoplay restrictions
+      setAudio(audioInstance);
     }
-  };
+  }, []);
 
   return (
     <div className="container">
@@ -22,13 +26,10 @@ export default function Home() {
       <main>
         <Header title="Welcome to my app!" />
         <p className="description">
-          Click the button to play audio.
+          Audio is playing in the background.
         </p>
-        <button onClick={playAudio}>Play Audio</button>
-        <audio controls>
-          <source src="/audio.mp3" type="audio/mp3" />
-          Your browser does not support the audio element.
-        </audio>
+        
+        <audio src="/rosee.mp3" autoPlay loop controls />
       </main>
 
       <Footer />
